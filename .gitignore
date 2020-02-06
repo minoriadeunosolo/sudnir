@@ -2,3 +2,7 @@
 src/sudnir/__pycache__/
 
 src/useradm/__pycache__/
+
+\.env/
+
+\.idea/

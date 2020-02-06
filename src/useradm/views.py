@@ -1,6 +1,5 @@
 
-from django.shortcuts import render, get_object_or_404
-from django.views import View
+from django.shortcuts import  get_object_or_404
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
@@ -15,12 +14,12 @@ class CtHome(TemplateView):
     template_name = 'useradm/home.html'
 
 
-
 @method_decorator(login_required, name='dispatch')
 class CtClientList(ListView):
     paginate_by = 5
     template_name = 'useradm/index.html'
     model = CtClient
+
 
 @method_decorator(login_required, name='dispatch')
 class CtClientCreation(CreateView):
@@ -35,6 +34,7 @@ class CtClientCreation(CreateView):
         instance.owner = self.request.user
         instance.save()
         return super().form_valid(form)
+
 
 class ModificationByOwnerMixin:
     def get_object(self, queryset=None):
@@ -57,15 +57,15 @@ class CtClientUpdate(ModificationByOwnerMixin, UpdateView):
     success_url = reverse_lazy('index')
     fields = ['first_name', 'last_name', 'iban']
 
-
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
         instance.save(update_fields=['first_name', 'last_name', 'iban'])
         return super().form_valid(form)
 
+
 @method_decorator(login_required, name='dispatch')
-class CtClientDelete( ModificationByOwnerMixin, DeleteView):
+class CtClientDelete(ModificationByOwnerMixin, DeleteView):
     model = CtClient
     success_url = reverse_lazy('index')
 

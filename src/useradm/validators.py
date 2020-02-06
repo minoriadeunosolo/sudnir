@@ -2,7 +2,6 @@ from django.core.exceptions import ValidationError
 from schwifty import IBAN
 
 
-
 def IbanValidator(iban):
     """Validates an IBAN account.
             Args:
@@ -12,7 +11,6 @@ def IbanValidator(iban):
     """
     try:
         IBAN(iban)
-
     except ValueError as e:
         raise ValidationError(e)
 
