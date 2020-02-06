@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'social.apps.django_app.default',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

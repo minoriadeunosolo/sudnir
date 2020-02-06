@@ -6,3 +6,7 @@ src/useradm/__pycache__/
 \.env/
 
 \.idea/
+
+src/useradm/migrations/__pycache__/
+
+src/useradm/test/__pycache__/
