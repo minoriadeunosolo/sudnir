@@ -1,0 +1,60 @@
+{% extends "useradm/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+<!-- Header -->
+<header class="w3-container" style="padding-top:22px">
+	<h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+</header>
+
+<div class="w3-row-padding w3-margin-bottom">
+	<div class="w3-quarter">
+		<div class="w3-container w3-teal w3-padding-16">
+			<div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+			<div class="w3-right">
+				<h3>active</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4><a href="{% url 'index' %}">User Administration</a></h4>
+		</div>
+	</div>
+	<div class="w3-quarter">
+		<div class="w3-container w3-gray w3-padding-16">
+			<div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+			<div class="w3-right">
+				<h3>inactive</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Logs</h4>
+		</div>
+	</div>
+	<div class="w3-quarter">
+		<div class="w3-container w3-gray w3-padding-16">
+			<div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+			<div class="w3-right">
+				<h3>inactive</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Shares</h4>
+		</div>
+	</div>
+	<div class="w3-quarter">
+		<div class="w3-container w3-gray w3-padding-16">
+			<div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+			<div class="w3-right">
+				<h3>inactive</h3>
+			</div>
+			<div class="w3-clear"></div>
+			<h4>Chat</h4>
+		</div>
+	</div>
+</div>
+{% else %}
+	  <h2>Welcome, now you can <a href="{% url 'login' %}">Log in </a></h2>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+
+
+{% extends "useradm/layout.html" %}
+
+{% block content %}
+  <form method='POST'>
+    {% csrf_token %}
+
+        <p class="w3-tooltip">
+          {{ form.first_name.label }} {{ form.first_name }} <i class="fa fa-info-circle"></i>
+            <span class="w3-text w3-tag">{{ form.first_name.help_text }}</span>
+          {{form.first_name.errors}}
+      </p>
+      <p class="w3-tooltip">
+          {{ form.last_name.label }} {{ form.last_name }} <i class="fa fa-info-circle"></i>
+            <span class="w3-text w3-tag">{{ form.last_name.help_text }}</span>
+          {{form.last_name.errors}}
+      </p>
+        <p class="w3-tooltip">
+          {{ form.iban.label }} {{ form.iban }} <i class="fa fa-info-circle"></i>
+            <span class="w3-text w3-tag">{{ form.iban.help_text }}</span>
+            {{form.iban.errors}}
+      </p>
+
+    {% if ct_user %}
+        <button type="summit" class="w3-btn w3-teal">Update </button>
+
+    {% else%}
+        <button type="summit" class="w3-btn w3-teal">Save </button>
+    {% endif %}
+    <a href="{% url 'index' %}" class="w3-btn w3-red">Cancel<a>
+  </form>
+{% endblock content %}
